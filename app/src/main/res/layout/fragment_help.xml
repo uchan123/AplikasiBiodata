@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="81dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Help"
+        android:id="@+id/txt_help1"
+        android:layout_weight="0.03" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="to start the application you can select the icon menu on the top left corner, then please select a category that you want to access the menu."
+        android:id="@+id/txt_help2"
+        android:layout_weight="0.03" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home is a start page that appears first when you open the app The Alumni."
+        android:id="@+id/txt_help3"
+        android:layout_weight="0.03" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alumni is a page that contains information about the alumni STMIK AMIKOM Yogyakarta."
+        android:id="@+id/txt_help4"
+        android:layout_weight="0.03" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Best Of The Best is a page that contains information about the alumni who received the award as best of the best."
+        android:id="@+id/txt_help5"
+        android:layout_weight="0.03" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="About a page that contains the application."
+        android:id="@+id/txt_help6"
+        android:layout_weight="0.03" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Help is a page that can assist you in using the application The Alumni"
+        android:id="@+id/txt_help7"
+        android:layout_weight="0.03" />
+</LinearLayout>

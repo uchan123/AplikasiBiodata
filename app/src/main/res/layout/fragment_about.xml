@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="About the Alumni"
+        android:id="@+id/txt_about1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The Alumni is a means for the partners STMIK AMIKOM Yogyakarta to communicate and obtain information about job vacancies. This application can also be accessed by the public to find out about information about the alumni with a range of skills and work experience."
+        android:id="@+id/txt_about2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Group 8 Inc."
+        android:id="@+id/txt_about3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Technical Information."
+        android:id="@+id/txt_about4" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="STMIK AMIKOM Yogyakarta."
+        android:id="@+id/txt_about5" />
+</LinearLayout>
