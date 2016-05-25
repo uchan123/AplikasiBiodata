@@ -26,5 +26,6 @@ public class ListAlumniActivity extends AppCompatActivity {
         listAlumni = (ListView) findViewById(R.id.listAlumni);
         alumniAdapter = new ListAlumniAdapter(this, R.layout.layout_item_alumni, alumni);
 
+        listAlumni.setAdapter(alumniAdapter);
     }
 }

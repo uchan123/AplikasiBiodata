@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity
             Intent i = new Intent(this, ListAlumniActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_alumni) {
-
+            //ListAlumniActivity
         } else if (id == R.id.nav_best) {
 
         } else if (id == R.id.nav_about) {
