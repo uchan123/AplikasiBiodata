@@ -73,11 +73,68 @@ public class DatabaseHelper extends SQLiteAssetHelper {
         return Alumni;
     }
 
-    private int getfotofromnpm(String npm){
-        try{
-            return context.getResources().getIdentifier(npm,"drawable", context.getPackageName());
+    public List<Alumni> getAllTheBest() {
+        List<Alumni> TheBest = new ArrayList<>();
+        String query = "Select * from " + TABLE_Alumni + " where " + COL_BEST + "=1";
+
+        db = this.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        if (c.moveToFirst()) {
+            do {
+                TheBest.add(new Alumni(
+                        c.getString(c.getColumnIndex(COL_NPM)),
+                        c.getString(c.getColumnIndex(COL_NAMA)),
+                        c.getDouble(c.getColumnIndex(COL_IPK)),
+                        c.getString(c.getColumnIndex(COL_TTL)),
+                        c.getString(c.getColumnIndex(COL_EMAIL)),
+                        c.getString(c.getColumnIndex(COL_TELP)),
+                        c.getString(c.getColumnIndex(COL_KEAHLIAN)),
+                        c.getString(c.getColumnIndex(COL_PROFESI)),
+                        c.getString(c.getColumnIndex(COL_PENGALAMAN)),
+                        c.getString(c.getColumnIndex(COL_NAMA_ORTU)),
+                        c.getString(c.getColumnIndex(COL_ALAMAT)),
+                        c.getString(c.getColumnIndex(COL_JUDUL_SKRIPSI)),
+                        c.getInt(c.getColumnIndex(COL_BEST)) == 1 ? true : false,
+                        getfotofromnpm(c.getString(c.getColumnIndex(COL_NPM)))
+                ));
+            } while (c.moveToNext());
         }
-        catch (Exception e){
+        return TheBest;
+    }
+
+    public Alumni getAlumni(String npm) {
+        Alumni alumni = null;
+        String query = "selesct * from " + TABLE_Alumni + " where " + COL_NPM + "='" + npm + "'";
+
+        db = this.getReadableDatabase();
+
+        Cursor c = db.rawQuery(query, null);
+
+        if (c.moveToFirst()) {
+            alumni =  new Alumni(c.getString(c.getColumnIndex(COL_NPM)),
+                    c.getString(c.getColumnIndex(COL_NAMA)),
+                    c.getDouble(c.getColumnIndex(COL_IPK)),
+                    c.getString(c.getColumnIndex(COL_TTL)),
+                    c.getString(c.getColumnIndex(COL_EMAIL)),
+                    c.getString(c.getColumnIndex(COL_TELP)),
+                    c.getString(c.getColumnIndex(COL_KEAHLIAN)),
+                    c.getString(c.getColumnIndex(COL_PROFESI)),
+                    c.getString(c.getColumnIndex(COL_PENGALAMAN)),
+                    c.getString(c.getColumnIndex(COL_NAMA_ORTU)),
+                    c.getString(c.getColumnIndex(COL_ALAMAT)),
+                    c.getString(c.getColumnIndex(COL_JUDUL_SKRIPSI)),
+                    c.getInt(c.getColumnIndex(COL_BEST)) == 1 ? true : false,
+                    getfotofromnpm(c.getString(c.getColumnIndex(COL_NPM))));
+        }
+        return alumni;
+    }
+
+    private int getfotofromnpm(String npm) {
+        try {
+            return context.getResources().getIdentifier(npm, "drawable", context.getPackageName());
+        } catch (Exception e) {
             e.printStackTrace();
             return -1;
         }
