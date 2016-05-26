@@ -20,7 +20,7 @@ public class AlumniDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alumni_detail);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        getSupportActionBar().setTitle("Detail Alumni");
         setUpView();
     }
 

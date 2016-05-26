@@ -35,7 +35,7 @@ public class AlumniFragment extends Fragment implements AdapterView.OnItemClickL
         View view = inflater.inflate(R.layout.fragment_alumni, container, false);
 
         listAlumni = (ListView) view.findViewById(R.id.listAlumni);
-        alumniAdapter = new ListAlumniAdapter(getActivity(), R.layout.layout_item_alumni);
+        alumniAdapter = new ListAlumniAdapter(getActivity(), R.layout.layout_item_alumni, AlumniSingle.i().all());
         listAlumni.setAdapter(alumniAdapter);
         listAlumni.setOnItemClickListener(this);
 

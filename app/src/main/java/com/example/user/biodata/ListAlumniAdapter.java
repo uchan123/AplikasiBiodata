@@ -17,17 +17,19 @@ public class ListAlumniAdapter extends ArrayAdapter<Alumni>{
 
     Context context;
     int resource;
+    List<Alumni>alumnis;
 
-    public ListAlumniAdapter(Context context, int resource) {
-        super(context, resource, AlumniSingle.i().all());
+    public ListAlumniAdapter(Context context, int resource, List<Alumni>alumnis) {
+        super(context, resource, alumnis);
 
         this.context = context;
         this.resource = resource;
+        this.alumnis = alumnis;
     }
 
     @Override
     public int getCount(){
-        return AlumniSingle.i().count();
+        return alumnis.size();
     }
 
     @Override
@@ -41,8 +43,8 @@ public class ListAlumniAdapter extends ArrayAdapter<Alumni>{
         vh.txtnama = (TextView) convertView.findViewById(R.id.txtnama);
         vh.txtnpm = (TextView) convertView.findViewById(R.id.txtnpm);
 
-        vh.txtnpm.setText(AlumniSingle.i().get(position).getNpm());
-        vh.txtnama.setText(AlumniSingle.i().get(position).getNama());
+        vh.txtnpm.setText(alumnis.get(position).getNpm());
+        vh.txtnama.setText(alumnis.get(position).getNama());
 
         return convertView;
     }

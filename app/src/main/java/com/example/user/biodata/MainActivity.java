@@ -1,5 +1,6 @@
 package com.example.user.biodata;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
@@ -101,18 +102,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             // Handle the camera action
             //Intent i = new Intent(this, AlumniFragment.class);
             //startActivity(i);
+            getSupportActionBar().setTitle("Home");
             fragmentManager.beginTransaction().replace(R.id.frame_fragment, new HomeFragment()).commit();
         } else if (id == R.id.nav_alumni) {
             //ListAlumniActivity
-            fragmentManager.beginTransaction().replace(R.id.frame_fragment, new AlumniFragment()).commit();
+            getSupportActionBar().setTitle("Alumni");
+            Bundle b = new Bundle();
+            b.putInt("tipe", 0);
+            AlumniFragment alumniFragment = new AlumniFragment();
+            alumniFragment.setArguments(b);
+            fragmentManager.beginTransaction().replace(R.id.frame_fragment, alumniFragment).commit();
         } else if (id == R.id.nav_best) {
-
+            getSupportActionBar().setTitle("Best Alumni");
+            Bundle b = new Bundle();
+            b.putInt("tipe",1);
+            AlumniFragment alumniFragment = new AlumniFragment();
+            alumniFragment.setArguments(b);
+            fragmentManager.beginTransaction().replace(R.id.frame_fragment, alumniFragment).commit();
         } else if (id == R.id.nav_about) {
-
+            getSupportActionBar().setTitle("About");
+            fragmentManager.beginTransaction().replace(R.id.frame_fragment, new AboutFragment()).commit();
         } else if (id == R.id.nav_help) {
-
+            getSupportActionBar().setTitle("Help");
+            fragmentManager.beginTransaction().replace(R.id.frame_fragment, new HelpFragment()).commit();
         } else if (id == R.id.nav_exit) {
-
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
