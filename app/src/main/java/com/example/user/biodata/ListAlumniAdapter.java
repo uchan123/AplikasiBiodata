@@ -16,40 +16,41 @@ import java.util.List;
 public class ListAlumniAdapter extends ArrayAdapter<Alumni>{
 
     Context context;
-    List<Alumni> alumni;
+    int resource;
 
-    public ListAlumniAdapter(Context context, int resource, List<Alumni> alumni) {
-        super(context, resource, alumni);
+    public ListAlumniAdapter(Context context, int resource) {
+        super(context, resource, AlumniSingle.i().all());
 
-        this.alumni = alumni;
         this.context = context;
+        this.resource = resource;
+    }
 
+    @Override
+    public int getCount(){
+        return AlumniSingle.i().count();
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         if(null==convertView){
-            convertView = LayoutInflater.from(context).inflate(R.layout.layout_item_alumni,parent, false);
+            convertView = LayoutInflater.from(context).inflate(resource,parent, false);
         }
 
         ViewHolder vh = new ViewHolder();
         vh.imgFoto = (ImageView) convertView.findViewById(R.id.imgfoto);
-        vh.txtnama = (TextView) convertView.findViewById(R.id.id_nama);
-        vh.txtnpm = (TextView) convertView.findViewById(R.id.id_nim);
+        vh.txtnama = (TextView) convertView.findViewById(R.id.txtnama);
+        vh.txtnpm = (TextView) convertView.findViewById(R.id.txtnpm);
 
-        vh.txtnpm.setText(alumni.get(position).getNpm());
-        vh.txtnama.setText(alumni.get(position).getNama());
-
-        convertView.setTag(vh);
+        vh.txtnpm.setText(AlumniSingle.i().get(position).getNpm());
+        vh.txtnama.setText(AlumniSingle.i().get(position).getNama());
 
         return convertView;
     }
-
+    /*
     @Override
     public int getCount() {
         return alumni.size();
-    }
+    }*/
 
     class ViewHolder {
         ImageView imgFoto;

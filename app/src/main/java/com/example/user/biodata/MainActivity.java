@@ -1,5 +1,6 @@
 package com.example.user.biodata;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,20 +15,26 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, AlumniFragment.OnContentItemClickListener {
+
+    Toolbar toolbar;
+    FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        setUpToolBar();
+        setUpContent();
+        setUpNavigationDrawer();
+    }
+
+    private void setUpToolBar() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        //test
-        //tets lagii
-        //test kagi lagi lagi
-
+    }
+       /*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,8 +42,13 @@ public class MainActivity extends AppCompatActivity
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        }); */
+    private void setUpContent() {
+        fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().add(R.id.frame_fragment,new HomeFragment()).commit();
+    }
 
+    private void setUpNavigationDrawer(){
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -57,7 +69,8 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    @Override
+    /*@SuppressWarnings("StatementWithEmptyBody")
+        @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
@@ -77,9 +90,8 @@ public class MainActivity extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    } */
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -87,10 +99,12 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             // Handle the camera action
-            Intent i = new Intent(this, ListAlumniActivity.class);
-            startActivity(i);
+            //Intent i = new Intent(this, AlumniFragment.class);
+            //startActivity(i);
+            fragmentManager.beginTransaction().replace(R.id.frame_fragment, new HomeFragment()).commit();
         } else if (id == R.id.nav_alumni) {
             //ListAlumniActivity
+            fragmentManager.beginTransaction().replace(R.id.frame_fragment, new AlumniFragment()).commit();
         } else if (id == R.id.nav_best) {
 
         } else if (id == R.id.nav_about) {
@@ -104,5 +118,12 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onContentItemClick(int pos){
+       Intent i = new Intent(this, AlumniDetailActivity.class) ;
+       i.putExtra("pos", pos);
+        startActivity(i);
     }
 }

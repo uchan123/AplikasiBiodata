@@ -4,7 +4,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ULALA"
-            android:id="@+id/id_nama"
+            android:id="@+id/txtnama"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/imgfoto"
             android:layout_alignParentRight="true"
@@ -26,8 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="13.11.7176"
-            android:id="@+id/id_nim"
-            android:layout_below="@+id/id_nama"
+            android:id="@+id/txtnpm"
+            android:layout_below="@+id/txtnama"
             android:layout_toRightOf="@+id/imgfoto"
             android:layout_toEndOf="@+id/imgfoto"
             android:layout_marginTop="10dp" />
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:text="Manajemen"
             android:id="@+id/id_keahlian"
-            android:layout_below="@+id/id_nim"
+            android:layout_below="@+id/txtnpm"
             android:layout_toRightOf="@+id/imgfoto"
             android:layout_toEndOf="@+id/imgfoto"
             android:layout_marginTop="10dp" />

@@ -19,9 +19,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Main2Activity"></activity>
 
-        <activity android:name=".ListAlumniActivity"></activity>
+        <activity android:name=".AlumniDetailActivity"></activity>
+
     </application>
 
 </manifest>
