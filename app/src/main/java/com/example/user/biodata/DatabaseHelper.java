@@ -21,19 +21,19 @@ public class DatabaseHelper extends SQLiteAssetHelper {
 
     private static final String TABLE_Alumni = "alumni";
 
-    private static final String COL_NPM = "npm";
-    private static final String COL_NAMA = "nama";
-    private static final String COL_IPK = "ipk";
-    private static final String COL_TTL = "ttl";
-    private static final String COL_EMAIL = "email";
-    private static final String COL_TELP = "telp";
-    private static final String COL_KEAHLIAN = "keahlian";
-    private static final String COL_PROFESI = "profesi";
-    private static final String COL_PENGALAMAN = "pengalaman";
-    private static final String COL_NAMA_ORTU = "nama ortu";
-    private static final String COL_ALAMAT = "alamat";
-    private static final String COL_JUDUL_SKRIPSI = "judul skripsi";
-    private static final String COL_BEST = "best";
+    private static final String COL_NPM = "NPM";
+    private static final String COL_NAMA = "NAMA";
+    private static final String COL_IPK = "IPK";
+    private static final String COL_TTL = "TTL";
+    private static final String COL_EMAIL = "EMAIL";
+    private static final String COL_TELP = "TELP";
+    private static final String COL_KEAHLIAN = "KEAHLIAN";
+    private static final String COL_PROFESI = "PROFESI";
+    private static final String COL_PENGALAMAN = "PENGALAMAN";
+    private static final String COL_NAMA_ORTU = "NAMA_ORTU";
+    private static final String COL_ALAMAT = "ALAMAT";
+    private static final String COL_JUDUL_SKRIPSI = "JUDUL_SKRIPSI";
+    private static final String COL_BEST = "Best";
 
 
     public DatabaseHelper(Context context) {
