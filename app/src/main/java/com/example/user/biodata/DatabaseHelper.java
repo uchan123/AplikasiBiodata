@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by My Computer on 5/26/2016.
+ * Created byu chn on 5/26/2016.
  */
 public class DatabaseHelper extends SQLiteAssetHelper {
     private static final String DATABASE_NAME = "alumni.db";
@@ -35,7 +35,6 @@ public class DatabaseHelper extends SQLiteAssetHelper {
 
     Context context;
     private SQLiteDatabase db;
-
 
 
     public DatabaseHelper(Context context) {
@@ -149,13 +148,48 @@ public class DatabaseHelper extends SQLiteAssetHelper {
         return alumni;
     }
 
-    private int getfotofromnpm(String npm) {
+    /*private int getfotofromnpm(String npm) {
         try {
             return context.getResources().getIdentifier(npm, "drawable", context.getPackageName());
         } catch (Exception e) {
             e.printStackTrace();
             return -1;
         }
+    }*/
+
+    public List<Alumni> cari(String c){
+        List<Alumni> nemu = new ArrayList<>();
+        //String query = "select * from" + TABLE_Alumni + " where NPM ='"+ c +"'";
+
+        String query = "select * from alumni where npm like '%" + c + "%' or nama like '%" + c + "%' or keahlian like '%" + c + "%' or profesi like '%" + c + "%' or pengalaman like '%" + c + "%' or judul_skripsi like '%" + c + "%'";
+
+        db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                nemu.add(new Alumni(
+                        cursor.getString(cursor.getColumnIndex(COL_NPM)),
+                        cursor.getString(cursor.getColumnIndex(COL_NAMA)),
+                        cursor.getDouble(cursor.getColumnIndex(COL_IPK)),
+                        cursor.getString(cursor.getColumnIndex(COL_TTL)),
+                        cursor.getString(cursor.getColumnIndex(COL_EMAIL)),
+                        cursor.getString(cursor.getColumnIndex(COL_TELP)),
+                        cursor.getString(cursor.getColumnIndex(COL_KEAHLIAN)),
+                        cursor.getString(cursor.getColumnIndex(COL_PROFESI)),
+                        cursor.getString(cursor.getColumnIndex(COL_PENGALAMAN)),
+                        cursor.getString(cursor.getColumnIndex(COL_NAMA_ORTU)),
+                        cursor.getString(cursor.getColumnIndex(COL_ALAMAT)),
+                        cursor.getString(cursor.getColumnIndex(COL_JUDUL_SKRIPSI)),
+                        cursor.getInt(cursor.getColumnIndex(COL_BEST)) == 1 ? true : false,
+                        getfotourl(cursor.getString(cursor.getColumnIndex(COL_NPM)))
+                ));
+            } while (cursor.moveToNext());
+        }
+
+        return nemu;
+
     }
 
     private String getfotourl(String npm) {
