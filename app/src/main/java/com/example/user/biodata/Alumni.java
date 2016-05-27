@@ -17,9 +17,9 @@ public class Alumni {
     String alamat;
     String judul_skripsi;
     boolean best;
-    int foto;
+    String foto;
 
-    public Alumni(String npm, String nama, double ipk, String ttl, String email, String telp, String keahlian, String profesi, String pengalaman, String nama_ortu, String alamat, String judul_skripsi, boolean best, int foto) {
+    public Alumni(String npm, String nama, double ipk, String ttl, String email, String telp, String keahlian, String profesi, String pengalaman, String nama_ortu, String alamat, String judul_skripsi, boolean best, String foto) {
         this.npm = npm;
         this.nama = nama;
         this.ipk = ipk;
@@ -140,11 +140,11 @@ public class Alumni {
         this.best = best;
     }
 
-    public int getFoto() {
+    public String getFoto() {
         return foto;
     }
 
-    public void setFoto(int foto) {
+    public void setFoto(String foto) {
         this.foto = foto;
     }
 }

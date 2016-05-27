@@ -10,7 +10,7 @@
             android:layout_height="100dp"
             android:id="@+id/imgfoto"
             android:src="@drawable/u"
-            android:scaleType="centerCrop" />
+            android:scaleType="fitStart" />
 
         <TextView
             android:layout_width="wrap_content"
