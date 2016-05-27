@@ -22,7 +22,6 @@
         android:id="@+id/txt_home1"
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="51dp"
-        android:layout_gravity="center_horizontal" />
+        android:layout_marginTop="51dp" />
 
 </LinearLayout>
