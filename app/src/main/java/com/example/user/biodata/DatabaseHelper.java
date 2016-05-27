@@ -32,7 +32,7 @@ public class DatabaseHelper extends SQLiteAssetHelper {
     private static final String COL_JUDUL_SKRIPSI = "JUDUL_SKRIPSI";
     private static final String COL_BEST = "Best";
 
-    
+
     Context context;
     private SQLiteDatabase db;
 
