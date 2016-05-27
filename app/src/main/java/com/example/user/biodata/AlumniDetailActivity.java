@@ -43,7 +43,7 @@ public class AlumniDetailActivity extends AppCompatActivity {
 
         txtName.setText(alumni.getNama());
         txtNim.setText(alumni.getNpm());
-        txtIpk.setText(alumni.getIpk());
+        txtIpk.setText(String.valueOf(alumni.getIpk()));
     }
 
    @Override
