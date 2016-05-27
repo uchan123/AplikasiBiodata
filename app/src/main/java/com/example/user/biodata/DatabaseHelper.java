@@ -124,7 +124,7 @@ public class DatabaseHelper extends SQLiteAssetHelper {
 
     public Alumni getAlumni(String npm) {
         Alumni alumni = null;
-        String query = "selesct * from " + TABLE_Alumni + " where " + COL_NPM + "='" + npm + "'";
+        String query = "select * from " + TABLE_Alumni + " where NPM='" + npm + "'";
 
         db = this.getReadableDatabase();
 

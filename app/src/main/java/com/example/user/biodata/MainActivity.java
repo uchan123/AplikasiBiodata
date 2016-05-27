@@ -135,9 +135,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public void onContentItemClick(int pos){
+    public void onContentItemClick(String npm){
        Intent i = new Intent(this, AlumniDetailActivity.class) ;
-       i.putExtra("pos", pos);
+       i.putExtra("npm", npm);
         startActivity(i);
     }
 }

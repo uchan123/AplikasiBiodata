@@ -44,12 +44,14 @@ public class ListAlumniAdapter extends ArrayAdapter<Alumni>{
         vh.imgFoto = (ImageView) convertView.findViewById(R.id.imgfoto);
         vh.txtnama = (TextView) convertView.findViewById(R.id.txtnama);
         vh.txtnpm = (TextView) convertView.findViewById(R.id.txtnpm);
+        vh.txtkeahlian = (TextView) convertView.findViewById(R.id.id_keahlian);
 
         vh.txtnpm.setText(alumnis.get(position).getNpm());
         vh.txtnama.setText(alumnis.get(position).getNama());
+        vh.txtkeahlian.setText(alumnis.get(position).getKeahlian());
 
         Picasso.with(context).load(alumnis.get(position).getFoto()).into(vh.imgFoto);
-        System.out.println(alumnis.get(position).getFoto());
+        //System.out.println(alumnis.get(position).getFoto());
 
         return convertView;
     }
@@ -63,6 +65,7 @@ public class ListAlumniAdapter extends ArrayAdapter<Alumni>{
         ImageView imgFoto;
         TextView txtnama;
         TextView txtnpm;
+        TextView txtkeahlian;
 
     }
 

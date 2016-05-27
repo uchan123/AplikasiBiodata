@@ -53,11 +53,11 @@ public class AlumniFragment extends Fragment implements AdapterView.OnItemClickL
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-        ((OnContentItemClickListener) getActivity()).onContentItemClick(position);
+        ((OnContentItemClickListener) getActivity()).onContentItemClick(alumnis.get(position).getNpm());
     }
 
     interface OnContentItemClickListener{
-        void onContentItemClick(int pos);
+        void onContentItemClick(String npm);
     }
 }
 

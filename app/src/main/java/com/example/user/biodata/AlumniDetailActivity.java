@@ -6,6 +6,8 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 /**
  * Created by user on 25/05/2016.
  */
@@ -14,6 +16,8 @@ public class AlumniDetailActivity extends AppCompatActivity {
     ImageView imgFoto;
     TextView txtName;
     TextView txtNim;
+    TextView txtIpk;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -26,15 +30,20 @@ public class AlumniDetailActivity extends AppCompatActivity {
 
     private void setUpView(){
         imgFoto = (ImageView) findViewById(R.id.img_foto);
-        txtName = (TextView) findViewById(R.id.txtnama);
-        txtNim = (TextView) findViewById(R.id.txtnpm);
+        txtName = (TextView) findViewById(R.id.txtNama);
+        txtNim = (TextView) findViewById(R.id.txtNpm);
+        txtIpk = (TextView) findViewById(R.id.txtIPK);
 
-        int pos = getIntent().getIntExtra("pos", 0);
+        String npm = getIntent().getStringExtra("npm");
 
-        Alumni alumni = AlumniSingle.i().get(pos);
+        DatabaseHelper db = new DatabaseHelper(this);
+        Alumni alumni = db.getAlumni(npm);
+
+        Picasso.with(this).load(alumni.getFoto()).into(imgFoto);
 
         txtName.setText(alumni.getNama());
         txtNim.setText(alumni.getNpm());
+        txtIpk.setText(alumni.getIpk());
     }
 
    @Override
