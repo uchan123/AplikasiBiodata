@@ -13,13 +13,10 @@ import java.util.List;
  * Created by My Computer on 5/26/2016.
  */
 public class DatabaseHelper extends SQLiteAssetHelper {
-    Context context;
-
     private static final String DATABASE_NAME = "alumni.db";
     private static final int DATABASE_VERSION = 1;
-    private SQLiteDatabase db;
-
     private static final String TABLE_Alumni = "alumni";
+
 
     private static final String COL_NPM = "NPM";
     private static final String COL_NAMA = "NAMA";
@@ -34,6 +31,23 @@ public class DatabaseHelper extends SQLiteAssetHelper {
     private static final String COL_ALAMAT = "ALAMAT";
     private static final String COL_JUDUL_SKRIPSI = "JUDUL_SKRIPSI";
     private static final String COL_BEST = "Best";
+
+    private static final String COL_NPM = "npm";
+    private static final String COL_NAMA = "nama";
+    private static final String COL_IPK = "ipk";
+    private static final String COL_TTL = "ttl";
+    private static final String COL_EMAIL = "email";
+    private static final String COL_TELP = "telp";
+    private static final String COL_KEAHLIAN = "keahlian";
+    private static final String COL_PROFESI = "profesi";
+    private static final String COL_PENGALAMAN = "pengalaman";
+    private static final String COL_NAMA_ORTU = "nama ortu";
+    private static final String COL_ALAMAT = "alamat";
+    private static final String COL_JUDUL_SKRIPSI = "judul skripsi";
+    private static final String COL_BEST = "best";
+    Context context;
+    private SQLiteDatabase db;
+
 
 
     public DatabaseHelper(Context context) {
@@ -52,21 +66,37 @@ public class DatabaseHelper extends SQLiteAssetHelper {
 
         if (c.moveToFirst()) {
             do {
+//                Alumni.add(new Alumni(
+//                        c.getString(c.getColumnIndex(COL_NPM)),
+//                        c.getString(c.getColumnIndex(COL_NAMA)),
+//                        c.getDouble(c.getColumnIndex(COL_IPK)),
+//                        c.getString(c.getColumnIndex(COL_TTL)),
+//                        c.getString(c.getColumnIndex(COL_EMAIL)),
+//                        c.getString(c.getColumnIndex(COL_TELP)),
+//                        c.getString(c.getColumnIndex(COL_KEAHLIAN)),
+//                        c.getString(c.getColumnIndex(COL_PROFESI)),
+//                        c.getString(c.getColumnIndex(COL_PENGALAMAN)),
+//                        c.getString(c.getColumnIndex(COL_NAMA_ORTU)),
+//                        c.getString(c.getColumnIndex(COL_ALAMAT)),
+//                        c.getString(c.getColumnIndex(COL_JUDUL_SKRIPSI)),
+//                        c.getInt(c.getColumnIndex(COL_BEST)) == 1 ? true : false,
+//                        getfotourl(c.getString(c.getColumnIndex(COL_NPM)))
+//                ));
                 Alumni.add(new Alumni(
-                        c.getString(c.getColumnIndex(COL_NPM)),
-                        c.getString(c.getColumnIndex(COL_NAMA)),
-                        c.getDouble(c.getColumnIndex(COL_IPK)),
-                        c.getString(c.getColumnIndex(COL_TTL)),
-                        c.getString(c.getColumnIndex(COL_EMAIL)),
-                        c.getString(c.getColumnIndex(COL_TELP)),
-                        c.getString(c.getColumnIndex(COL_KEAHLIAN)),
-                        c.getString(c.getColumnIndex(COL_PROFESI)),
-                        c.getString(c.getColumnIndex(COL_PENGALAMAN)),
-                        c.getString(c.getColumnIndex(COL_NAMA_ORTU)),
-                        c.getString(c.getColumnIndex(COL_ALAMAT)),
-                        c.getString(c.getColumnIndex(COL_JUDUL_SKRIPSI)),
-                        c.getInt(c.getColumnIndex(COL_BEST)) == 1 ? true : false,
-                        getfotofromnpm(c.getString(c.getColumnIndex(COL_NPM)))
+                        c.getString(0),
+                        c.getString(1),
+                        c.getDouble(2),
+                        c.getString(3),
+                        c.getString(4),
+                        c.getString(5),
+                        c.getString(6),
+                        c.getString(7),
+                        c.getString(8),
+                        c.getString(9),
+                        c.getString(10),
+                        c.getString(11),
+                        c.getInt(12) == 1 ? true : false,
+                        getfotourl(c.getString(0))
                 ));
             } while (c.moveToNext());
         }
@@ -97,7 +127,7 @@ public class DatabaseHelper extends SQLiteAssetHelper {
                         c.getString(c.getColumnIndex(COL_ALAMAT)),
                         c.getString(c.getColumnIndex(COL_JUDUL_SKRIPSI)),
                         c.getInt(c.getColumnIndex(COL_BEST)) == 1 ? true : false,
-                        getfotofromnpm(c.getString(c.getColumnIndex(COL_NPM)))
+                        getfotourl(c.getString(c.getColumnIndex(COL_NPM)))
                 ));
             } while (c.moveToNext());
         }
@@ -113,7 +143,7 @@ public class DatabaseHelper extends SQLiteAssetHelper {
         Cursor c = db.rawQuery(query, null);
 
         if (c.moveToFirst()) {
-            alumni =  new Alumni(c.getString(c.getColumnIndex(COL_NPM)),
+            alumni = new Alumni(c.getString(c.getColumnIndex(COL_NPM)),
                     c.getString(c.getColumnIndex(COL_NAMA)),
                     c.getDouble(c.getColumnIndex(COL_IPK)),
                     c.getString(c.getColumnIndex(COL_TTL)),
@@ -126,7 +156,7 @@ public class DatabaseHelper extends SQLiteAssetHelper {
                     c.getString(c.getColumnIndex(COL_ALAMAT)),
                     c.getString(c.getColumnIndex(COL_JUDUL_SKRIPSI)),
                     c.getInt(c.getColumnIndex(COL_BEST)) == 1 ? true : false,
-                    getfotofromnpm(c.getString(c.getColumnIndex(COL_NPM))));
+                    getfotourl(c.getString(c.getColumnIndex(COL_NPM))));
         }
         return alumni;
     }
@@ -138,5 +168,11 @@ public class DatabaseHelper extends SQLiteAssetHelper {
             e.printStackTrace();
             return -1;
         }
+    }
+
+    private String getfotourl(String npm) {
+        String tahun = "20" + npm.substring(0, 2);
+
+        return "http://amikom.ac.id/public/fotomhs/" + tahun + "/" + npm + ".jpg";
     }
 }

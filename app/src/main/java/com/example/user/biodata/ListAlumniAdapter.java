@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 /**
@@ -45,6 +47,9 @@ public class ListAlumniAdapter extends ArrayAdapter<Alumni>{
 
         vh.txtnpm.setText(alumnis.get(position).getNpm());
         vh.txtnama.setText(alumnis.get(position).getNama());
+
+        Picasso.with(context).load(alumnis.get(position).getFoto()).into(vh.imgFoto);
+        System.out.println(alumnis.get(position).getFoto());
 
         return convertView;
     }
