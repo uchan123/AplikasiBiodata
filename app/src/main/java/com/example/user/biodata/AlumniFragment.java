@@ -19,6 +19,7 @@ public class AlumniFragment extends Fragment implements AdapterView.OnItemClickL
     ListView listAlumni;
     ListAlumniAdapter alumniAdapter;
     List<Alumni> alumnis;
+    DatabaseHelper db ;
 
     @Override
    /* protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +36,13 @@ public class AlumniFragment extends Fragment implements AdapterView.OnItemClickL
         View view = inflater.inflate(R.layout.fragment_alumni, container, false);
 
         int type = getArguments().getInt("tipe");
-        DatabaseHelper db = new DatabaseHelper(getActivity());
-        if (type==0) {
-            alumnis = db.getAllAlumni();
+        db = new DatabaseHelper(getActivity());
+        if (type==1) {
+            alumnis = db.getAllTheBest();
 
         } else {
-            alumnis = db.getAllTheBest();
+
+            alumnis = db.getAllAlumni();
         }
 
         listAlumni = (ListView) view.findViewById(R.id.listAlumni);
@@ -49,6 +51,11 @@ public class AlumniFragment extends Fragment implements AdapterView.OnItemClickL
         listAlumni.setOnItemClickListener(this);
 
         return view;
+    }
+
+    public void filter(String cari){
+        alumnis = db.cari(cari);
+        alumniAdapter.notifyDataSetChanged();
     }
 
     @Override

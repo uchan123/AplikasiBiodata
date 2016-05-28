@@ -1,11 +1,13 @@
 package com.example.user.biodata;
 
+import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.SearchView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     Toolbar toolbar;
     FragmentManager fragmentManager;
+    NavigationView navigationView ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -75,6 +78,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        SearchView cari = (SearchView) menu.findItem(R.id.search).getActionView();
+        cari.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if(!(fragmentManager.findFragmentById(R.id.frame_fragment)instanceof AlumniFragment)){
+                    fragmentManager.beginTransaction().replace(R.id.frame_fragment,new AlumniFragment()).commit();
+                    fragmentManager.executePendingTransactions();
+                    navigationView.getMenu().getItem(1).setChecked(true);
+                }
+                ((AlumniFragment)fragmentManager.findFragmentById(R.id.frame_fragment)).filter(newText);
+                return false;
+            }
+        });
+
         return true;
     }
 
