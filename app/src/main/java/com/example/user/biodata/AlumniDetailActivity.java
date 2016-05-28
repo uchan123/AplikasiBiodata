@@ -1,8 +1,11 @@
 package com.example.user.biodata;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -54,7 +57,7 @@ public class AlumniDetailActivity extends AppCompatActivity {
         String npm = getIntent().getStringExtra("npm");
 
         DatabaseHelper db = new DatabaseHelper(this);
-        Alumni alumni = db.getAlumni(npm);
+        final Alumni alumni = db.getAlumni(npm);
 
         Picasso.with(this).load(alumni.getFoto()).into(imgFoto);
 
@@ -71,6 +74,23 @@ public class AlumniDetailActivity extends AppCompatActivity {
         txtAlamat.setText(alumni.getAlamat());
         txtJudul.setText(alumni.getJudul_skripsi());
 
+        txtTelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + alumni.getTelp()));
+                startActivity(intent);
+            }
+        });
+
+        txtEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                intent.setData(Uri.parse("mailto:" + alumni.getEmail()));
+                startActivity(intent);
+            }
+        });
     }
 
    @Override
