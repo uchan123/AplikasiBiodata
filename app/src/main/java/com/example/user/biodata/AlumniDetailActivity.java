@@ -70,7 +70,7 @@ public class AlumniDetailActivity extends AppCompatActivity {
         txtOrtu.setText(alumni.getNama_ortu());
         txtAlamat.setText(alumni.getAlamat());
         txtJudul.setText(alumni.getJudul_skripsi());
-        
+
     }
 
    @Override

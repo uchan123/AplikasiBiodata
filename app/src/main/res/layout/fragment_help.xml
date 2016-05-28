@@ -5,19 +5,12 @@
     android:weightSum="1">
 
     <TextView
-        android:layout_width="81dp"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Help"
-        android:id="@+id/txt_help1"
-        android:layout_weight="0.03" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="to start the application you can select the icon menu on the top left corner, then please select a category that you want to access the menu."
+        android:text="To start the application you can select the icon menu on the top left corner, then please select a category that you want to access the menu."
         android:id="@+id/txt_help2"
-        android:layout_weight="0.03" />
+        android:layout_weight="0.03"
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
