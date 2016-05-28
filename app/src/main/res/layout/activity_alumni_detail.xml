@@ -33,8 +33,7 @@
                 android:layout_below="@+id/img_foto"
                 android:layout_margin="8dp"
                 android:measureWithLargestChild="false"
-                android:padding="5dp"
-                android:backgroundTint="#9675d3">
+                android:padding="5dp">
 
                 <TableRow
                     android:layout_width="match_parent"

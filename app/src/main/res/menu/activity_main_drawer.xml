@@ -8,7 +8,7 @@
             android:title="Home" />
         <item
             android:id="@+id/nav_alumni"
-            android:icon="@drawable/alumni"
+            android:icon="@drawable/toga"
             android:title="Alumni" />
         <item
             android:id="@+id/nav_best"
