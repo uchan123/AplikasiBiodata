@@ -4,19 +4,19 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/u"
+            android:icon="@drawable/home1"
             android:title="Home" />
         <item
             android:id="@+id/nav_alumni"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/alumni"
             android:title="Alumni" />
         <item
             android:id="@+id/nav_best"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/best1"
             android:title="Best Of The Best" />
         <item
             android:id="@+id/nav_about"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/about"
             android:title="About" />
     </group>
 
@@ -24,7 +24,7 @@
         <menu>
             <item
                 android:id="@+id/nav_help"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/help"
                 android:title="Help" />
             <item
                 android:id="@+id/nav_exit"
