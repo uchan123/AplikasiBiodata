@@ -54,7 +54,9 @@ public class AlumniFragment extends Fragment implements AdapterView.OnItemClickL
     }
 
     public void filter(String cari){
-        alumnis = db.cari(cari);
+        alumnis.clear();
+        alumnis.addAll(db.cari(cari));
+        System.out.println("" + alumnis.size());
         alumniAdapter.notifyDataSetChanged();
     }
 

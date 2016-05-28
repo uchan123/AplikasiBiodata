@@ -162,7 +162,7 @@ public class DatabaseHelper extends SQLiteAssetHelper {
         //String query = "select * from" + TABLE_Alumni + " where NPM ='"+ c +"'";
 
         String query = "select * from alumni where npm like '%" + c + "%' or nama like '%" + c + "%' or keahlian like '%" + c + "%' or profesi like '%" + c + "%' or pengalaman like '%" + c + "%' or judul_skripsi like '%" + c + "%'";
-
+//        System.out.println(query);
         db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(query, null);

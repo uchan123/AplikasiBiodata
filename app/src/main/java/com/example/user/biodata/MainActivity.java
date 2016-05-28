@@ -88,7 +88,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public boolean onQueryTextChange(String newText) {
                 if(!(fragmentManager.findFragmentById(R.id.frame_fragment)instanceof AlumniFragment)){
-                    fragmentManager.beginTransaction().replace(R.id.frame_fragment,new AlumniFragment()).commit();
+                    Bundle b = new Bundle();
+                    b.putInt("tipe", 0);
+                    AlumniFragment alumniFragment = new AlumniFragment();
+                    alumniFragment.setArguments(b);
+                    fragmentManager.beginTransaction().replace(R.id.frame_fragment, alumniFragment).commit();
                     fragmentManager.executePendingTransactions();
                     navigationView.getMenu().getItem(1).setChecked(true);
                 }
